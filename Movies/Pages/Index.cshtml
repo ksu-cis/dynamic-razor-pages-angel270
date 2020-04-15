@@ -4,4 +4,28 @@
     ViewData["Title"] = "Home page";
 }
 
-<h1>Hello World</h1>
+<h1>Movies</h1>
+
+<ul class="movie-list">
+    @foreach(Movie m in MovieDatabase.All)
+	{
+		<li>
+			<div class="details">
+				<h3>@m.Title</h3>
+
+				@if (m.MPAARating != null)
+				{<div class="mpaa">Rated @m.MPAARating</div>}
+
+				@if (m.MajorGenre != null)
+				{<div class="genre">@m.MajorGenre</div>}
+			</div>
+			<div class="ratings">
+				@if (m.IMDBRating != null)
+				{<div class="imdb">@m.IMDBRating</div>}
+
+				@if (m.RottenTomatoesRating != null)
+				{<div class="rotten-tomatoes">@m.RottenTomatoesRating</div>}
+			</div>
+		</li>
+	}
+</ul>
